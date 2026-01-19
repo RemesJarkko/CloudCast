@@ -5,11 +5,13 @@
 	import { weatherGlobal } from '$lib/weatherGlobal.svelte';
 
 	let weatherHours: Weather[] = $derived(weatherGlobal.saatietoTaulukko);
+	let timeDivider: number = $derived(weatherGlobal.timeDivider);
 </script>
 
 <div class="weather-hours">
 	{#each weatherHours as weatherHour, index}
-		{#if weatherHour.Date.getUTCDate() === weatherGlobal.selectedDay}
+		{#if weatherHour.Date.getDate() === weatherGlobal.selectedDay && weatherHour.Date.getHours() % timeDivider === 0}
+			<!-- Näyttää sään vain jos säätiedon tunti on paikallisesti 3(kun timeDivider arvo on 3) jaollinen  getUTCDate() vaihdettu paikalliseen myös-->
 			<WeatherHour {weatherHour} />
 		{/if}
 	{/each}
