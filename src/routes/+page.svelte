@@ -22,7 +22,7 @@
 		'Precipitation1h'
 	];
 	let city = $state('Jyväskylä');
-	let timeStep = 180; // Määrittää minuuteissa kuinka usein haetaan säädataa
+	let timeStep = 60; // Määrittää minuuteissa kuinka usein haetaan säädataa
 
 	let startTime = $state('');
 	let endTime = $state('');
